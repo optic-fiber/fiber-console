@@ -1,4 +1,4 @@
-package com.cheroliv.fiber.cucumber.cucumber.stepdefs
+package com.cheroliv.fiber.cucumber.stepdefs
 
 import com.cheroliv.fiber.dao.AbstractInterTestCase
 import com.cheroliv.fiber.domain.Inter
