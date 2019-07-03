@@ -37,12 +37,12 @@ configurations {
     }
 }
 
-
 test {
     useJUnitPlatform {
         excludeEngines 'junit-vintage'
         includeEngines 'junit-jupiter'
     }
+    exclude "**/*IT*", "**/*IntTest*", "**/*CucumberIT*"
 }
 
 dependencies {
@@ -84,9 +84,9 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter:$junit_jupiter_version"
     testImplementation "org.junit.platform:junit-platform-commons:$junit_platform_version"
     testImplementation "org.junit.platform:junit-platform-launcher:$junit_platform_version"
-
+    testImplementation "io.cucumber:cucumber-junit:$cucumber_version"
+    testImplementation "io.cucumber:cucumber-spring:$cucumber_version"
 }
-
 
 task dependencyReportFile(type: DependencyReportTask) {
     String outputFileName = 'dependencies.txt'
@@ -96,3 +96,15 @@ task dependencyReportFile(type: DependencyReportTask) {
     outputFile = file(outputFileName)
 }
 
+task cucumberTest(type: Test) {
+    description = "Execute cucumber BDD tests."
+    group = "verification"
+    include "**/*CucumberIT*"
+}
+
+check.dependsOn cucumberTest
+
+task cucumberTestReport(type: TestReport) {
+    destinationDir = file("$buildDir/reports/tests")
+    reportOn cucumberTest
+}

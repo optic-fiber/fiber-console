@@ -4,8 +4,9 @@ import com.cheroliv.fiber.domain.Inter
 import groovy.transform.CompileStatic
 import groovy.transform.ToString
 
-@CompileStatic
+
 @ToString
+@CompileStatic
 class Recap implements Serializable {
     String sheetName
     List<Inter> inters

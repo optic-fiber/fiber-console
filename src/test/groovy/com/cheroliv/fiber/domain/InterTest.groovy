@@ -311,5 +311,4 @@ class InterTest {
                 validator.validateProperty inter, "nom"
         assert constraintViolations.size() == 0
     }
-
 }

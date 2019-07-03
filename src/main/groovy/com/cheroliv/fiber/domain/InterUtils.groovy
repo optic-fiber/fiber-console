@@ -5,6 +5,8 @@ import groovy.transform.CompileStatic
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.Month
+import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 
@@ -45,7 +47,12 @@ class InterUtils {
                         .ofPattern("yyyy-MM-dd"))
     }
 
-
+    synchronized static ZonedDateTime getDateTime(LocalDate date, LocalTime time, ZoneId zoneId) {
+        ZonedDateTime.of(
+                date,
+                time,
+                zoneId)
+    }
     static Integer timeStringToInteger(String strHeure) {
         parseInt "${strHeure.charAt(0)}${strHeure.charAt(1)}"
     }

@@ -14,6 +14,9 @@ import org.springframework.transaction.annotation.Transactional
 import javax.validation.Validator
 import java.nio.file.Paths
 import java.time.LocalDate
+import java.time.LocalTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 @Slf4j
@@ -43,7 +46,22 @@ abstract class AbstractInterTestCase {
         new File(applicationContext
                 .getResource("/").URI).path
     }
-    Resource getClasseurResource(){
+
+
+    Inter jsonDataToInter(Map<String, String> strJsonData) {
+        new Inter(
+                id: Long.parseLong (strJsonData["id_inter"]),
+                nd: strJsonData["ND"],
+                nom: strJsonData["nom"],
+                prenom: strJsonData["prenom"],
+                heure: InterUtils.parseStringHeureToLocalTime(strJsonData["heure"]),
+                date: LocalDate.parse(strJsonData["date"], DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                contrat: strJsonData["contrat"],
+                type: strJsonData["type"])
+    }
+
+
+    Resource getClasseurResource() {
         String rootPathData = new File(applicationContext
                 .getResource("/").URI).path
         applicationContext
@@ -79,7 +97,6 @@ abstract class AbstractInterTestCase {
                         .file.getText('utf-8')
         ) as List<Map<String, String>>
     }
-
 
     List<List<Integer>> getAnneesMois() {
         //recuperer le resultat depuis le jeux de données json

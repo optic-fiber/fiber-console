@@ -6,9 +6,10 @@ import groovy.transform.ToString
 import groovy.util.logging.Slf4j
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 
-@CompileStatic
+
 @Slf4j
 @ToString
+@CompileStatic
 class ClasseurRecap implements Serializable {
     XSSFWorkbook classeur
     String classeurPathName
