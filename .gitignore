@@ -1,0 +1,14 @@
+.gradle/*
+.idea/*
+build/*
+gradle/wrapper/gradle-wrapper.jar
+out/*
+output/*
+.classpath
+.project
+bin/*
+.settings/*
+data/.~lock.*
+*.iml
+local.properties
+dependencies.txt
