@@ -23,7 +23,9 @@ import static java.time.format.DateTimeFormatter.ofPattern
 class Inter implements InterConstants, Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
     @Column(name = "id_inter")
     Long id
     @Column(name = "ND")
