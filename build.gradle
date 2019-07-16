@@ -66,6 +66,10 @@ dependencies {
     implementation "org.apache.poi:poi:$poi_version"
     implementation "org.apache.poi:poi-ooxml:$poi_version"
 
+
+    implementation "com.github.lgooddatepicker:LGoodDatePicker:$l_good_date_picker_version"
+
+
     runtimeOnly "org.postgresql:postgresql:$postgresql_driver_version"
 
     testImplementation("org.springframework.boot:spring-boot-starter-test:$spring_boot_version") {
