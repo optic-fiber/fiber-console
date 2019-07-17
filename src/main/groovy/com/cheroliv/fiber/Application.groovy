@@ -12,11 +12,8 @@ import org.springframework.context.ConfigurableApplicationContext
 class Application {
 
     static void main(String[] args) {
-//        SpringApplication.run(Application.class, args)
         SpringApplicationBuilder builder = new SpringApplicationBuilder(Application.class)
-
         builder.headless(false)
-
         ConfigurableApplicationContext context = builder.run(args)
     }
 

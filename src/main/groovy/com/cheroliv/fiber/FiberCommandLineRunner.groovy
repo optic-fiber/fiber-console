@@ -27,12 +27,9 @@ class FiberCommandLineRunner implements
     void run(String... strings) throws Exception {
 
         if (!applicationContext.environment.activeProfiles.contains("test")) {
-
             String path = System.getProperty("user.home")
-
             InterService interService = applicationContext.getBean(InterService)
             RecapService recapService = applicationContext.getBean(RecapService)
-
             interService.setUp()
             interService.importJsonFromFile interService.getFiberJsonFilePath(path)
 //            recapService.processClasseurFeuilles(path)
