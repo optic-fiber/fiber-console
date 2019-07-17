@@ -24,11 +24,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        firstRecButton = new javax.swing.JButton();
+        prevRecButton = new javax.swing.JButton();
+        lastRecButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
+        nextRecButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         ndLabel = new javax.swing.JLabel();
         contractLabel = new javax.swing.JLabel();
@@ -41,7 +41,7 @@ public class MainFrame extends javax.swing.JFrame {
         ndTextField = new javax.swing.JTextField();
         lastNameTextField = new javax.swing.JTextField();
         firstNameTextField = new javax.swing.JTextField();
-        dateTimePicker1 = new com.github.lgooddatepicker.components.DateTimePicker();
+        interDateTimePicker = new com.github.lgooddatepicker.components.DateTimePicker();
         jPanel4 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -51,15 +51,15 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("|<");
+        firstRecButton.setText("|<");
 
-        jButton2.setText("<");
+        prevRecButton.setText("<");
 
-        jButton3.setText(">|");
+        lastRecButton.setText(">|");
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tiny_save.png"))); // NOI18N
+        saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tiny_save.png"))); // NOI18N
 
-        jButton5.setText(">");
+        nextRecButton.setText(">");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -67,15 +67,15 @@ public class MainFrame extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(firstRecButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(prevRecButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nextRecButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lastRecButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -83,11 +83,11 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(firstRecButton)
+                    .addComponent(prevRecButton)
+                    .addComponent(lastRecButton)
+                    .addComponent(saveButton)
+                    .addComponent(nextRecButton))
                 .addContainerGap())
         );
 
@@ -133,7 +133,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(ndTextField)
                     .addComponent(lastNameTextField)
                     .addComponent(firstNameTextField)
-                    .addComponent(dateTimePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(interDateTimePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -162,7 +162,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dateTimeLabel)
-                    .addComponent(dateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(interDateTimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -276,14 +276,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> contractComboBox;
     private javax.swing.JLabel contractLabel;
     private javax.swing.JLabel dateTimeLabel;
-    private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker1;
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JTextField firstNameTextField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton firstRecButton;
+    private com.github.lgooddatepicker.components.DateTimePicker interDateTimePicker;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -295,8 +291,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTextField lastNameTextField;
+    private javax.swing.JButton lastRecButton;
     private javax.swing.JLabel ndLabel;
     private javax.swing.JTextField ndTextField;
+    private javax.swing.JButton nextRecButton;
+    private javax.swing.JButton prevRecButton;
+    private javax.swing.JButton saveButton;
     private javax.swing.JComboBox<String> typeComboBox;
     private javax.swing.JLabel typeLabel;
     // End of variables declaration//GEN-END:variables
