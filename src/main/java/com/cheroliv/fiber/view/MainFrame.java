@@ -1,7 +1,7 @@
 package com.cheroliv.fiber.view;
 
-import com.cheroliv.fiber.dao.InterRepository;
-import com.cheroliv.fiber.domain.Inter;
+//import com.cheroliv.fiber.dao.InterRepository;
+//import com.cheroliv.fiber.domain.Inter;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -265,17 +265,17 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
     private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
         // TODO add your handling code here:
         Validator validator=applicationContext.getBean(Validator.class);
-        Inter currentInter = new Inter();
-        currentInter.setContrat((String)contractComboBox.getSelectedItem());
-        currentInter.setType((String)contractComboBox.getSelectedItem());
-        currentInter.setDate(interDateTimePicker.datePicker.getDate());
-        currentInter.setHeure(interDateTimePicker.timePicker.getTime());
-        currentInter.setNom(lastNameTextField.getText());
-        currentInter.setPrenom(firstNameTextField.getText());
-        Set<ConstraintViolation<Inter>> constraintViolations= validator.validate(currentInter);
-        if(constraintViolations.isEmpty()){
-            applicationContext.getBean(InterRepository.class).save(currentInter);
-        }
+//        Inter currentInter = new Inter();
+//        currentInter.setContrat((String)contractComboBox.getSelectedItem());
+//        currentInter.setType((String)contractComboBox.getSelectedItem());
+//        currentInter.setDate(interDateTimePicker.datePicker.getDate());
+//        currentInter.setHeure(interDateTimePicker.timePicker.getTime());
+//        currentInter.setNom(lastNameTextField.getText());
+//        currentInter.setPrenom(firstNameTextField.getText());
+//        Set<ConstraintViolation<Inter>> constraintViolations= validator.validate(currentInter);
+//        if(constraintViolations.isEmpty()){
+//            applicationContext.getBean(InterRepository.class).save(currentInter);
+//        }
     }//GEN-LAST:event_saveButtonMouseClicked
 
     /**
