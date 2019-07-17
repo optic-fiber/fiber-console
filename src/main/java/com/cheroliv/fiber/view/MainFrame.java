@@ -21,7 +21,8 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class MainFrame extends javax.swing.JFrame implements ApplicationContextAware {
-    private static Logger log = LoggerFactory.getLogger(MainFrame.class);
+    private static final Logger log = LoggerFactory.getLogger(MainFrame.class);
+    
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
