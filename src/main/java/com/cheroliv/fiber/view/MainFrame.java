@@ -2,6 +2,9 @@ package com.cheroliv.fiber.view;
 
 import com.cheroliv.fiber.domain.Inter;
 import com.cheroliv.fiber.dao.InterRepository;
+import groovy.util.logging.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -15,11 +18,13 @@ import org.springframework.stereotype.Component;
  *
  * @author cheroliv
  */
+@Slf4j
 @Component
-public class MainFrame extends javax.swing.JFrame implements ApplicationContextAware{
+public class MainFrame extends javax.swing.JFrame implements ApplicationContextAware {
+    private static Logger log = LoggerFactory.getLogger(MainFrame.class);
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext=applicationContext;
+        this.applicationContext = applicationContext;
     }
 
     private ApplicationContext applicationContext;
@@ -333,19 +338,20 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
         Inter currentInter;
         Validator validator;
         InterRepository interRepository;
-        validator=applicationContext.getBean(Validator.class);
-        interRepository=applicationContext.getBean(InterRepository.class);
+        validator = applicationContext.getBean(Validator.class);
+        interRepository = applicationContext.getBean(InterRepository.class);
         currentInter = new Inter();
-        currentInter.setContrat((String)contractComboBox.getSelectedItem());
-        currentInter.setType((String)contractComboBox.getSelectedItem());
+        currentInter.setContrat((String) contractComboBox.getSelectedItem());
+        currentInter.setType((String) contractComboBox.getSelectedItem());
         currentInter.setDate(interDateTimePicker.datePicker.getDate());
         currentInter.setHeure(interDateTimePicker.timePicker.getTime());
         currentInter.setNom(lastNameTextField.getText());
         currentInter.setPrenom(firstNameTextField.getText());
-        constraintViolations= validator.validate(currentInter);
-        if(constraintViolations.isEmpty()){
+        constraintViolations = validator.validate(currentInter);
+        if (constraintViolations.isEmpty()) {
             interRepository.save(currentInter);
         }
+        log.info("foo");
     }//GEN-LAST:event_saveButtonMouseClicked
 
     /**
