@@ -80,11 +80,12 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        firstRecButton.setText("|<");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/Bundle"); // NOI18N
+        firstRecButton.setText(bundle.getString("MainFrame.firstRecButton.text")); // NOI18N
 
-        prevRecButton.setText("<");
+        prevRecButton.setText(bundle.getString("MainFrame.prevRecButton.text")); // NOI18N
 
-        lastRecButton.setText(">|");
+        lastRecButton.setText(bundle.getString("MainFrame.lastRecButton.text")); // NOI18N
 
         saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tiny_save.png"))); // NOI18N
         saveButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,7 +94,7 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
             }
         });
 
-        nextRecButton.setText(">");
+        nextRecButton.setText(bundle.getString("MainFrame.nextRecButton.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -125,27 +126,27 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
                 .addContainerGap())
         );
 
-        ndLabel.setText("nd");
+        ndLabel.setText(bundle.getString("MainFrame.ndLabel.text")); // NOI18N
 
-        contractLabel.setText("contract");
+        contractLabel.setText(bundle.getString("MainFrame.contractLabel.text")); // NOI18N
 
-        typeLabel.setText("type");
+        typeLabel.setText(bundle.getString("MainFrame.typeLabel.text")); // NOI18N
 
-        lastNameLabel.setText("lastname");
+        lastNameLabel.setText(bundle.getString("MainFrame.lastNameLabel.text")); // NOI18N
 
-        firstNameLabel.setText("firstname");
+        firstNameLabel.setText(bundle.getString("MainFrame.firstNameLabel.text")); // NOI18N
 
-        dateTimeLabel.setText("date time");
+        dateTimeLabel.setText(bundle.getString("MainFrame.dateTimeLabel.text")); // NOI18N
 
         typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         contractComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        ndTextField.setText("nd_textField");
+        ndTextField.setText(bundle.getString("MainFrame.ndTextField.text")); // NOI18N
 
-        lastNameTextField.setText("jTextField2");
+        lastNameTextField.setText(bundle.getString("MainFrame.lastNameTextField.text")); // NOI18N
 
-        firstNameTextField.setText("jTextField3");
+        firstNameTextField.setText(bundle.getString("MainFrame.firstNameTextField.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -235,7 +236,7 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        jTabbedPane1.addTab(bundle.getString("MainFrame.jPanel1.TabConstraints.tabTitle"), jPanel1); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -305,18 +306,18 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
                     .addContainerGap(289, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("tab2", jPanel5);
+        jTabbedPane1.addTab(bundle.getString("MainFrame.jPanel5.TabConstraints.tabTitle"), jPanel5); // NOI18N
 
-        jMenu1.setText("File");
+        jMenu1.setText(bundle.getString("MainFrame.jMenu1.text")); // NOI18N
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setText(bundle.getString("MainFrame.jMenuItem1.text")); // NOI18N
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText(bundle.getString("MainFrame.jMenu2.text")); // NOI18N
 
-        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.setText(bundle.getString("MainFrame.jMenuItem2.text")); // NOI18N
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
