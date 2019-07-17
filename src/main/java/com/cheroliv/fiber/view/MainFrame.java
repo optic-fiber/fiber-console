@@ -53,13 +53,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         jButton1.setText("|<");
 
-        jButton2.setText("jButton2");
+        jButton2.setText("<");
 
-        jButton3.setText("jButton3");
+        jButton3.setText(">|");
 
-        jButton4.setText("jButton3");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tiny_save.png"))); // NOI18N
 
-        jButton5.setText("jButton3");
+        jButton5.setText(">");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
