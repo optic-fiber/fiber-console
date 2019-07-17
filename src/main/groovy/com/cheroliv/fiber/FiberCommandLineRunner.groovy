@@ -2,7 +2,6 @@ package com.cheroliv.fiber
 
 import com.cheroliv.fiber.service.InterService
 import com.cheroliv.fiber.service.RecapService
-
 import com.cheroliv.fiber.view.MainFrame
 import groovy.transform.CompileStatic
 import groovy.util.logging.Slf4j
@@ -38,11 +37,9 @@ class FiberCommandLineRunner implements
             interService.importJsonFromFile interService.getFiberJsonFilePath(path)
 //            recapService.processClasseurFeuilles(path)
             //           interService.saveToJsonFile interService.getFiberJsonFilePath(path)
-
-
             EventQueue.invokeLater(new Runnable() {
                 void run() {
-                    new MainFrame().visible = true
+                    new MainFrame().setVisible(true)
                 }
             })
         }

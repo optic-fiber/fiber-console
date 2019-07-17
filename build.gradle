@@ -45,6 +45,16 @@ test {
     exclude "**/*IT*", "**/*IntTest*", "**/*CucumberIT*"
 }
 
+sourceSets {
+    main {
+        java { srcDirs = [] }
+        groovy { srcDirs =['src/main/java', 'src/main/groovy'] }
+    }
+    test {
+        java { srcDirs = [] }
+        groovy { srcDirs =['src/test/java', 'src/test/groovy'] }
+    }
+}
 dependencies {
     developmentOnly "org.springframework.boot:spring-boot-devtools:$spring_boot_version"
     testImplementation 'org.springframework:spring-context:5.1.8.RELEASE'

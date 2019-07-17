@@ -1,15 +1,16 @@
 package com.cheroliv.fiber.view;
 
-//import com.cheroliv.fiber.dao.InterRepository;
-//import com.cheroliv.fiber.domain.Inter;
+import com.cheroliv.fiber.domain.Inter;
+import com.cheroliv.fiber.dao.InterRepository;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.util.Set;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
@@ -17,14 +18,12 @@ import java.util.Set;
  */
 @Component
 public class MainFrame extends javax.swing.JFrame implements ApplicationContextAware{
-
-    private  ApplicationContext applicationContext;
-
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext =applicationContext;
+        this.applicationContext=applicationContext;
     }
 
+    private ApplicationContext applicationContext;
 
     /**
      * Creates new form MainFrame
@@ -263,19 +262,23 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
-        // TODO add your handling code here:
-        Validator validator=applicationContext.getBean(Validator.class);
-//        Inter currentInter = new Inter();
-//        currentInter.setContrat((String)contractComboBox.getSelectedItem());
-//        currentInter.setType((String)contractComboBox.getSelectedItem());
-//        currentInter.setDate(interDateTimePicker.datePicker.getDate());
-//        currentInter.setHeure(interDateTimePicker.timePicker.getTime());
-//        currentInter.setNom(lastNameTextField.getText());
-//        currentInter.setPrenom(firstNameTextField.getText());
-//        Set<ConstraintViolation<Inter>> constraintViolations= validator.validate(currentInter);
-//        if(constraintViolations.isEmpty()){
-//            applicationContext.getBean(InterRepository.class).save(currentInter);
-//        }
+        Set<ConstraintViolation<Inter>> constraintViolations;
+        Inter currentInter;
+        Validator validator;
+        InterRepository interRepository;
+        validator=applicationContext.getBean(Validator.class);
+        interRepository=applicationContext.getBean(InterRepository.class);
+        currentInter = new Inter();
+        currentInter.setContrat((String)contractComboBox.getSelectedItem());
+        currentInter.setType((String)contractComboBox.getSelectedItem());
+        currentInter.setDate(interDateTimePicker.datePicker.getDate());
+        currentInter.setHeure(interDateTimePicker.timePicker.getTime());
+        currentInter.setNom(lastNameTextField.getText());
+        currentInter.setPrenom(firstNameTextField.getText());
+        constraintViolations= validator.validate(currentInter);
+        if(constraintViolations.isEmpty()){
+            interRepository.save(currentInter);
+        }
     }//GEN-LAST:event_saveButtonMouseClicked
 
     /**
@@ -307,6 +310,7 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new MainFrame().setVisible(true);
             }
