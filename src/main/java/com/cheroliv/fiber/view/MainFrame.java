@@ -1,10 +1,30 @@
 package com.cheroliv.fiber.view;
 
+import com.cheroliv.fiber.dao.InterRepository;
+import com.cheroliv.fiber.domain.Inter;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+import java.util.Set;
+
 /**
  *
  * @author cheroliv
  */
-public class MainFrame extends javax.swing.JFrame {
+@Component
+public class MainFrame extends javax.swing.JFrame implements ApplicationContextAware{
+
+    private  ApplicationContext applicationContext;
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext =applicationContext;
+    }
+
 
     /**
      * Creates new form MainFrame
@@ -58,6 +78,11 @@ public class MainFrame extends javax.swing.JFrame {
         lastRecButton.setText(">|");
 
         saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tiny_save.png"))); // NOI18N
+        saveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveButtonMouseClicked(evt);
+            }
+        });
 
         nextRecButton.setText(">");
 
@@ -237,6 +262,22 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
+        // TODO add your handling code here:
+        Validator validator=applicationContext.getBean(Validator.class);
+        Inter currentInter = new Inter();
+        currentInter.setContrat((String)contractComboBox.getSelectedItem());
+        currentInter.setType((String)contractComboBox.getSelectedItem());
+        currentInter.setDate(interDateTimePicker.datePicker.getDate());
+        currentInter.setHeure(interDateTimePicker.timePicker.getTime());
+        currentInter.setNom(lastNameTextField.getText());
+        currentInter.setPrenom(firstNameTextField.getText());
+        Set<ConstraintViolation<Inter>> constraintViolations= validator.validate(currentInter);
+        if(constraintViolations.isEmpty()){
+            applicationContext.getBean(InterRepository.class).save(currentInter);
+        }
+    }//GEN-LAST:event_saveButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -244,7 +285,7 @@ public class MainFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
