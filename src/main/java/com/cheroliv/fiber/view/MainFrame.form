@@ -160,6 +160,9 @@
                       <ResourceString bundle="i18n/Bundle.properties" key="MainFrame.firstRecButton.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="firstRecButtonMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="prevRecButton">
                   <Properties>
@@ -344,11 +347,6 @@
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="ndTextField">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="i18n/Bundle.properties" key="MainFrame.ndTextField.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-                    </Property>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="lastNameTextField">
                   <Properties>

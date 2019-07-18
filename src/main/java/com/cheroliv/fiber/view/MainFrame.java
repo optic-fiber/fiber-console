@@ -5,6 +5,7 @@ import com.cheroliv.fiber.domain.Inter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.data.domain.Sort;
@@ -12,9 +13,8 @@ import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+import java.util.List;
 import java.util.Set;
-import javax.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author cheroliv
@@ -32,6 +32,7 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
+
     @Autowired
     private InterRepository interRepository;
 
@@ -46,14 +47,15 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
     private ApplicationContext applicationContext;
     private Long currentId;
 
-    @PostConstruct
-    void init() {
-        Inter currentInter = interRepository.findAll(Sort.by(Sort.Direction.ASC, "id")).iterator().next();
-        this.currentId = currentInter.getId();
-        this.idValueLabel.setText(currentInter.getId().toString());
-        this.ndTextField.setText(currentInter.getNd());
-//        this.typeT
-    }
+//    @PostConstruct
+//    void init() {
+//        Inter currentInter = interRepository.findAll(Sort.by(Sort.Direction.ASC, "id")).get(0);
+//        this.currentId = currentInter.getId();
+//        this.idValueLabel.setText(currentInter.getId().toString());
+//        this.ndTextField.setText(currentInter.getNd());
+
+//
+//    }
 
     /**
      * Creates new form MainFrame
@@ -105,6 +107,11 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/Bundle"); // NOI18N
         firstRecButton.setText(bundle.getString("MainFrame.firstRecButton.text")); // NOI18N
+        firstRecButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                firstRecButtonMouseClicked(evt);
+            }
+        });
 
         prevRecButton.setText(bundle.getString("MainFrame.prevRecButton.text")); // NOI18N
 
@@ -164,8 +171,6 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
         typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         contractComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        ndTextField.setText(bundle.getString("MainFrame.ndTextField.text")); // NOI18N
 
         lastNameTextField.setText(bundle.getString("MainFrame.lastNameTextField.text")); // NOI18N
 
@@ -321,8 +326,19 @@ public class MainFrame extends javax.swing.JFrame implements ApplicationContextA
         if (constraintViolations.isEmpty()) {
             interRepository.save(currentInter);
         }
-        log.info("foo");
     }//GEN-LAST:event_saveButtonMouseClicked
+
+    private void firstRecButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_firstRecButtonMouseClicked
+        List<Inter> inters = interRepository.findAll(
+                Sort.by(
+                        Sort.Direction.ASC, "id"
+                ));
+        if (!inters.isEmpty()) {
+            Inter currentInter = inters.get(0);
+            this.currentId = currentInter.getId();
+            this.ndTextField.setText(currentInter.getNd());
+        }
+    }//GEN-LAST:event_firstRecButtonMouseClicked
 
     /**
      * @param args the command line arguments
