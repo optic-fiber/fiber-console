@@ -12,14 +12,13 @@ import java.time.LocalDate
 import java.time.LocalTime
 
 import static java.time.format.DateTimeFormatter.ofPattern
-
+@ToString
 @CompileStatic
 @Entity
 @Table(name = "`Inter`", uniqueConstraints = [
         @UniqueConstraint(
                 columnNames = ["ND", "type"],
                 name = "uniq_idx_nd_type")])
-@ToString
 class Inter implements InterConstants, Serializable {
 
     @Id
